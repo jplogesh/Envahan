@@ -1,0 +1,245 @@
+import React from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+// import MyIcon from "../../components/MyIcon";
+import { useFonts } from "expo-font";
+import MyBid from "../../components/MyBid";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from "react-native-responsive-screen-hooks";
+
+const YourTrips = ({ navigation }) => {
+  const [loaded] = useFonts({
+    "Roboto Slab": require("../../assets/fonts/RobotoSlab-Regular.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+  // const clickHandler1 = () => {
+  //   navigation.navigate("Upcoming");
+  // };
+  const clickHandler2 = () => {
+    navigation.navigate("Trip Ongoing");
+  };
+  const clickHandler3 = () => {
+    navigation.navigate("Completed");
+  };
+  const clickHandler4 = () => {
+    navigation.navigate("Cancelled");
+  };
+  const clickHandler5 = () => {
+    navigation.navigate("Your Drivers");
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image source={require("../../assets/dpicon.png")} style={styles.dp} />
+        <Text style={styles.tit}>ABT Transport</Text>
+      </View>
+      <TouchableOpacity></TouchableOpacity>
+      <View style={styles.titcontainer}>
+        {/* <TouchableOpacity> */}
+        <Text style={styles.tit1}>Upcoming</Text>
+        {/* </TouchableOpacity> */}
+        <TouchableOpacity>
+          <Text style={styles.tit2} onPress={clickHandler2}>
+            Ongoing
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.tit3} onPress={clickHandler3}>
+            Completed
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.tit1} onPress={clickHandler4}>
+            Cancelled
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={styles.job}>JOB ID : 564564</Text>
+
+        <View style={styles.bidcontainer}>
+          <MyBid
+            bidbtn1="Assign"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+
+          <MyBid
+            bidbtn1="Assign"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+        </View>
+
+        {/* <Text style={styles.job}>JOB ID : 564564</Text> */}
+
+        <Text style={styles.job}>JOB ID : 564565</Text>
+
+        <View style={styles.bidcontainer1}>
+          <MyBid
+            bidbtn1="Yet to Start"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+          <MyBid
+            bidbtn1="Yet to Start"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+        </View>
+        <Text style={styles.job}>JOB ID : 564564</Text>
+
+        <View style={styles.bidcontainer}>
+          <MyBid
+            bidbtn1="Assign"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+
+          <MyBid
+            bidbtn1="Assign"
+            bidid={564565}
+            bidtime="05 Nov 6:10 PM"
+            onPress={clickHandler5}
+          />
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
+export default YourTrips;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    // flex: 1,
+    width: widthPercentageToDP("100%"),
+    height: heightPercentageToDP("100%"),
+  },
+  dp: {
+    resizeMode: "contain",
+    height: heightPercentageToDP("8%"),
+    width: widthPercentageToDP("13%"),
+    // backgroundColor: "orange",
+    marginLeft: widthPercentageToDP("7%"),
+  },
+  header: {
+    flexDirection: "row",
+    // justifyContent: "flex-start",
+    // marginLeft: 0,
+    // marginTop: 25,
+    paddingBottom: 20,
+    backgroundColor: "#6d42f9",
+    width: widthPercentageToDP("100%"),
+    paddingTop: 35,
+    borderBottomWidth: 0.5,
+    borderColor: "#D8D8D8",
+  },
+  tit: {
+    // flexDirection: "row",
+    textAlign: "center",
+    marginTop: heightPercentageToDP("2%"),
+    fontSize: RFValue(18),
+    marginLeft: widthPercentageToDP("5%"),
+    color: "white",
+    // fontWeight: "bold",
+    fontFamily: "Roboto Slab",
+  },
+  titcontainer: {
+    fontFamily: "Roboto Slab",
+    height: 50,
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlignVertical: "center",
+    backgroundColor: "#6d42f9",
+    color: "white",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  tit1: {
+    // flexDirection: "row",
+    // textAlign: "center",
+    // marginTop: 10,
+    // fontSize: 17,
+    fontSize: RFValue(15),
+    paddingHorizontal: 2,
+    color: "white",
+    // fontWeight: "bold",
+    fontFamily: "Roboto Slab",
+  },
+  tit2: {
+    // borderRightWidth: 1,
+    // borderLeftWidth: 1,
+    borderColor: "#fff",
+    color: "white",
+    // paddingHorizontal: 20,
+    fontFamily: "Roboto Slab",
+    fontSize: RFValue(15),
+  },
+  tit3: {
+    // borderRightWidth: 1,
+    // borderLeftWidth: 1,
+    borderColor: "white",
+    color: "white",
+    // paddingLeft: 10,
+    // paddingRight: 20,
+    fontFamily: "Roboto Slab",
+    fontSize: RFValue(15),
+  },
+
+  bidcontainer: {
+    height: heightPercentageToDP("43%"),
+    width: widthPercentageToDP("90%"),
+
+    backgroundColor: "#e5e1ea",
+    borderWidth: 1,
+    borderColor: "#f6eded",
+    // padding: 10,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    // paddingVertical: 5,
+    paddingBottom: 10,
+  },
+  bidcontainer1: {
+    height: heightPercentageToDP("43%"),
+    width: widthPercentageToDP("90%"),
+    backgroundColor: "#e5e1ea",
+    borderWidth: 1,
+    borderColor: "#f6eded",
+    padding: 10,
+    borderRadius: 15,
+    // paddingVertical: 10,
+    paddingBottom: 50,
+    paddingTop: 0,
+    // marginTop: 10,
+  },
+  job: {
+    paddingTop: 10,
+    fontSize: RFValue(14),
+    fontFamily: "Roboto Slab",
+  },
+});
